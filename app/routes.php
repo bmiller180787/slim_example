@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
+use App\Controllers\BooksController;
 use App\Controllers\CoursesAPIController;
+use App\Controllers\myCallableClass;
+use App\Controllers\StaffController;
 use Slim\App;
 use \Psr\Http\Message\RequestInterface;
 use \Psr\Http\Message\ResponseInterface;
@@ -31,9 +34,18 @@ return function (App $app) {
         return $response;
     });
 
-    //Names function
+    //Names function - not usually done this way
 
     $app->get('/named', 'namedfunc');
+
+    //Class Method
+
+    $app->get('/class', MyCallableClass::class);
+
+    //Examples
+    $app->get('/books', BooksController::class);
+
+    $app->get('/staff', StaffController::class);
 
 };
 
