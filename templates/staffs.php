@@ -12,6 +12,7 @@
     foreach ($staffs as $staff) {
         echo '<p>Name: ' . $staff['name'] . '</p>';
         echo '<p>Position: ' . $staff['position'] . '</p>';
+        echo '<br>';
     }
     ?>
 
