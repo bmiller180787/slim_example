@@ -34,4 +34,18 @@ class BooksModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getBook(string $id)
+    {
+        $sql = 'SELECT `id`,
+            `title`,
+            `author`
+            FROM `books`
+            WHERE `id` = :id;';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(PDO::FETCH_CLASS, Book::class);
+        $params = ['id' => $id];
+        $query->execute($params);
+        return $query->fetch();
+    }
 }
